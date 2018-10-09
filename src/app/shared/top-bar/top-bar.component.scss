@@ -1,0 +1,18 @@
+.appTopBar {
+  width: 100vw;
+  height: 3rem;
+  position: relative;
+  top: 0;
+  left: 0;
+  ul {
+    list-style: none;
+    a{
+      text-decoration: none;
+    }
+  }
+}
+.logo,
+ul {
+  display: inline-block;
+  margin-left: 10px;
+}
