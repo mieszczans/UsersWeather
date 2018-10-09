@@ -1,0 +1,40 @@
+<div class="expansionPanel">
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add new user
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form (ngSubmit)="addUser(userForm)" #addUserForm [formGroup]="userForm">
+      <mat-form-field>
+        <input matInput placeholder="First name" type="text" name="firstname" id="firstname" placeholder="Firstname"
+          formControlName="firstname">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Surname" name="surname" id="surname" placeholder="Surname" formControlName="surname">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Country" name="country" id="country" placeholder="Country" formControlName="country">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="City" name="city" id="city" placeholder="City" formControlName="city">
+      </mat-form-field>
+
+      <mat-radio-group class="radio" formControlName="gender">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-action-row>
+        <button mat-button type="reset" color="warn" class="reset">Clear</button>
+        <button mat-button type="submit" color="primary" class="addButton">Add user</button>
+      </mat-action-row>
+    </form>
+  </mat-expansion-panel>
+
+</div>
