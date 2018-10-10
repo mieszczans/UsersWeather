@@ -11,18 +11,22 @@
       <mat-form-field>
         <input matInput placeholder="First name" type="text" name="firstname" id="firstname" placeholder="Firstname"
           formControlName="firstname">
+          <mat-error>Firstname is required</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input matInput placeholder="Surname" name="surname" id="surname" placeholder="Surname" formControlName="surname">
+        <mat-error>Surname is required</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input matInput placeholder="Country" name="country" id="country" placeholder="Country" formControlName="country">
+        <mat-error>Country is required</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input matInput placeholder="City" name="city" id="city" placeholder="City" formControlName="city">
+        <mat-error>City is required</mat-error>
       </mat-form-field>
 
       <mat-radio-group class="radio" formControlName="gender">
@@ -32,7 +36,7 @@
 
       <mat-action-row>
         <button mat-button type="reset" color="warn" class="reset">Clear</button>
-        <button mat-button type="submit" color="primary" class="addButton">Add user</button>
+        <button mat-button type="submit" color="primary" class="addButton" [disabled]="!userForm.valid">Add user</button>
       </mat-action-row>
     </form>
   </mat-expansion-panel>

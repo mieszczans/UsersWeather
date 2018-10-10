@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "jan",
+      "surname": "kowalski",
+      "city": "krakow",
+      "country": "poland",
+      "gender": "male"
+    },
+    {
+      "id": 2,
+      "firstname": "tom",
+      "surname": "buchman",
+      "city": "warszawa",
+      "country": "poland",
+      "gender": "male"
+    }
+  ]
+}

@@ -8,24 +8,36 @@ import { Subject } from 'rxjs';
 })
 export class UserService {
   userListChanges = new Subject<User[]>();
-  private userList: User[] = [
-    new User(1, 'Jan', 'Kowalski', 'Krakow', 'Poland', 'male'),
-    new User(2, 'Tom', 'Buchman', 'Katowice', 'Poland', 'male')
-  ];
+  private userList: User[] = [];
 
-  constructor() { }
-  addUser(user: User) {
+  addUserToLocalList(user: User): void {
     this.userList.push(user);
-    this.userListChanges.next([...this.userList, user]);
   }
 
-  getUsers() {
+  getUsers(): User[] {
     return this.userList;
   }
 
-  deleteUser(user: User) {
+  makeUserInstance(form): User {
+    const { firstname, surname, city, country, gender } = form.value;
+    const newUser = new User(firstname, surname, city, country, gender, this.addIdToUser());
+    return newUser;
+  }
+
+  private addIdToUser(): number {
+    const id: number = this.userList.length + 1;
+    return id;
+  }
+
+  refreshUsersList(usersList: User[]) {
+    this.userList = usersList;
+  }
+
+  deleteUser(user: User): void {
     const newUserList = this.userList.filter((existingUser) => user !== existingUser);
     this.userList = newUserList;
+    console.log(this.userList);
     this.userListChanges.next(newUserList);
   }
+
 }

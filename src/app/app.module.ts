@@ -10,6 +10,7 @@ import { MaterialModule } from './shared/material/material.module';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UserService } from './services/user.service';
+import { UserApiService } from './services/user-api.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, UserApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

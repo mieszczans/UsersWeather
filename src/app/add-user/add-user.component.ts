@@ -1,6 +1,8 @@
+import { UserApiService } from './../services/user-api.service';
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators, NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { User } from '../user/user';
 
 @Component({
   selector: 'app-add-user',
@@ -16,11 +18,17 @@ export class AddUserComponent implements OnInit {
   gender: AbstractControl;
 
   constructor(
-    private http: HttpClient,
+    private userS: UserService,
+    private userApi: UserApiService,
     private fb: FormBuilder
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.createUserForm();
+    this.refreshUserList();
+  }
+
+  createUserForm(): void {
     this.userForm = this.fb.group({
       firstname: ['', Validators.required],
       surname: ['', Validators.required],
@@ -35,7 +43,33 @@ export class AddUserComponent implements OnInit {
     this.gender = this.userForm.controls['gender'];
   }
 
-  addUser(form: NgForm) {
+  addUser(form: User): void {
+    const user = this.userS.makeUserInstance(form);
+    this.sendRequestAddUser(user);
+  }
 
+  sendRequestAddUser(user: User): void {
+    this.userApi.addUserToApi(user)
+    .subscribe(
+      () => {
+        this.userS.addUserToLocalList(user);
+      },
+      () => {
+        console.log('Something wrong with request to add user');
+      }
+    );
+  }
+
+  refreshUserList(): void {
+    this.userApi.getUserListFromApi()
+    .subscribe(
+      (usersList) => {
+        this.userS.refreshUsersList(usersList);
+        this.userS.userListChanges.next(usersList);
+      },
+      () => {
+        console.log('Ups. Can not refresh userlist');
+      }
+    );
   }
 }
