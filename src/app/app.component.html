@@ -7,6 +7,23 @@
   </div>
   <div class="userListContainer">
     <h2>Users</h2>
-    <app-user></app-user>
+    <table>
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Surname</th>
+          <th>Show details</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          app-user
+          *ngFor="let user of usersList"
+          [user]="user"
+          >
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

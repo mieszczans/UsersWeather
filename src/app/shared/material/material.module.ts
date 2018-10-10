@@ -6,7 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatDividerModule} from '@angular/material/divider';
 @NgModule({
   imports: [
     MatButtonModule,
@@ -14,7 +14,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDividerModule
 ],
   exports: [
     MatButtonModule,
@@ -22,7 +23,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule { }

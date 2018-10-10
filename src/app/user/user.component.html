@@ -1,10 +1,13 @@
-<div class="user">
-  <span>user.firstname</span>
-  <span>user.surname</span>
+<td>{{user?.firstname}}</td>
+<td>{{user?.surname}}</td>
+<td>
   <a href="#">
     <i class="material-icons md-48">assignment</i>
   </a>
-  <a href="#">
+</td>
+<td>
+  <a href="#" (click)="deleteUser(user, $event)">
     <i class="material-icons md-48">close</i>
   </a>
-</div>
+</td>
+<mat-divider></mat-divider>
