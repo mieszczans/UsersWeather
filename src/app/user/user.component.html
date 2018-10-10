@@ -1,7 +1,7 @@
 <td>{{user?.firstname}}</td>
 <td>{{user?.surname}}</td>
 <td>
-  <a href="#">
+  <a [routerLink] = "['/user', user.id]">
     <i class="material-icons md-48">assignment</i>
   </a>
 </td>

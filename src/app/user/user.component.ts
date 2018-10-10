@@ -22,7 +22,7 @@ export class UserComponent {
       () => {
         console.log('Can not delete user in API');
       }
-    )
+    );
   }
 
 }

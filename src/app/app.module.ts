@@ -2,6 +2,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,12 +12,24 @@ import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UserService } from './services/user.service';
 import { UserApiService } from './services/user-api.service';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserListComponent } from './user-list/user-list.component';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/user-list', pathMatch: 'full' },
+  { path: 'user-list', component: UserListComponent },
+  { path: 'user/:id', component: UserDetailsComponent },
+  { path: '**', redirectTo: '/user-list' },
+
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    AddUserComponent
+    AddUserComponent,
+    UserDetailsComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +38,8 @@ import { UserApiService } from './services/user-api.service';
     SharedModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [UserService, UserApiService],
   bootstrap: [AppComponent]
