@@ -40,4 +40,9 @@ export class UserService {
     this.userListChanges.next(newUserList);
   }
 
+  getUserById(id: number): User {
+    const chosenUsers = this.userList.filter((currentUser) => currentUser.id === id);
+    return chosenUsers[0];
+  }
+
 }

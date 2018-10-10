@@ -14,11 +14,12 @@ import { UserService } from './services/user.service';
 import { UserApiService } from './services/user-api.service';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserDetailsResolver } from './user-details/user-details-resolver.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/user-list', pathMatch: 'full' },
   { path: 'user-list', component: UserListComponent },
-  { path: 'user/:id', component: UserDetailsComponent },
+  { path: 'user/:id', component: UserDetailsComponent, resolve: {user: UserDetailsResolver} },
   { path: '**', redirectTo: '/user-list' },
 
 ];
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, UserApiService],
+  providers: [UserService, UserApiService, UserDetailsResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

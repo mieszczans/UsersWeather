@@ -3,6 +3,14 @@
 
   </div>
   <div class="userDetailsInfo">
-
+    <h3>{{user.firstname}} {{user.surname}}</h3>
+    <div class="details">
+      <label for="city">City</label>
+      <p id="city">{{user.city}}</p>
+      <label for="country">Country</label>
+      <p id="country">{{user.country}}</p>
+      <label for="gender">Gender</label>
+      <p id="gender">{{user.gender | uppercase}}</p>
+    </div>
   </div>
 </div>
