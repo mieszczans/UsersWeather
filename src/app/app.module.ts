@@ -15,6 +15,7 @@ import { UserApiService } from './services/user-api.service';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailsResolver } from './user-details/user-details-resolver.service';
+import { WeatherApiService } from './services/weather-api.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/user-list', pathMatch: 'full' },
@@ -42,7 +43,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, UserApiService, UserDetailsResolver],
+  providers: [UserService, UserApiService, UserDetailsResolver, WeatherApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
