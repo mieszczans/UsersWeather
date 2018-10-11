@@ -11,6 +11,8 @@ import { ActivatedRoute, Data } from '@angular/router';
 export class UserDetailsComponent implements OnInit {
   user: User;
   forecast;
+  humidity: string;
+  temperature: string;
 
   constructor(private route: ActivatedRoute, private weatherS: WeatherApiService) { }
 
@@ -20,30 +22,24 @@ export class UserDetailsComponent implements OnInit {
         this.user = data['user'];
       }
     );
-    this.getWOEID();
     this.getForecast();
   }
-  getWOEID(): void {
-    this.weatherS.makeWoeidURL(this.user.city);
-    this.saveWoeidObject();
-  }
 
-  saveWoeidObject() {
-    this.weatherS.findCityWoeid()
-    .subscribe(
-      (obj) => this.weatherS.saveWoeidObject(obj),
-      () => console.log('Can not get woeid object')
-    );
-  }
 
   getForecast() {
+    this.weatherS.makeURLCityWeather(this.user.city);
     this.weatherS.getForecastFromAPI()
     .subscribe(
       (data) => {
         this.forecast = data;
-        console.log(data);
+        this.getDesiredWeatherData(data);
       },
       () => console.log('Sorry can not get forecast')
     );
+  }
+
+  getDesiredWeatherData(data) {
+    this.humidity = data.query.results.channel.atmosphere.humidity;
+    this.temperature = data.query.results.channel.item.condition.temp;
   }
 }
