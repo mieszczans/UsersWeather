@@ -1,6 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
 import { UserApiService } from './../services/user-api.service';
 import { UserService } from './../services/user.service';
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from './user';
 
 @Component({
@@ -11,7 +12,7 @@ import { User } from './user';
 export class UserComponent {
   @Input() user: User;
 
-  constructor(private userS: UserService, private userApi: UserApiService) { }
+  constructor(private userS: UserService, private userApi: UserApiService, private route: ActivatedRoute) { }
 
   deleteUser(user: User) {
     this.userApi.deleteUser(user)

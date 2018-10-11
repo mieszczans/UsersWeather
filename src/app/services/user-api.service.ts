@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../user/user';
 import { Observable } from 'rxjs';
-import { share, shareReplay, refCount } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +25,9 @@ export class UserApiService {
 
   getUserListFromApi(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/users`);
+  }
+
+  getUserById(id: number) {
+    return this.http.get<User>(`${this.baseUrl}/users?id=${id}`);
   }
 }

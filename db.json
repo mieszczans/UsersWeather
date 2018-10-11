@@ -1,20 +1,28 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstname": "jan",
-      "surname": "kowalski",
-      "city": "krakow",
-      "country": "poland",
-      "gender": "male"
+      "firstname": "Sebastian",
+      "surname": "Mieszczan",
+      "country": "asdasdsa",
+      "city": "Kraków",
+      "gender": "female",
+      "id": 1
     },
     {
-      "id": 2,
-      "firstname": "tom",
-      "surname": "buchman",
-      "city": "warszawa",
-      "country": "poland",
-      "gender": "male"
+      "firstname": "Presto",
+      "surname": "asdasdas",
+      "city": "Kraków",
+      "country": "Polska",
+      "gender": "female",
+      "id": 2
+    },
+    {
+      "firstname": "asdasdas",
+      "surname": "asdasdasdas",
+      "city": "asdsadasdsada",
+      "country": "asdasdsadsa",
+      "gender": "female",
+      "id": 3
     }
   ]
 }

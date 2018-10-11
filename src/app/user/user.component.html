@@ -1,12 +1,14 @@
 <td>{{user?.firstname}}</td>
 <td>{{user?.surname}}</td>
-<td>
-  <a [routerLink] = "['/user', user.id]">
+<td class="iconButton">
+  <button mat-button type="button" [routerLink]="['/user', user.id]" class="">
     <i class="material-icons md-48">assignment</i>
+  </button>
+  <a>
   </a>
 </td>
-<td>
-  <a href="#" (click)="deleteUser(user)">
+<td class="iconButton">
+  <button mat-button type="button" (click)="deleteUser(user)" class="">
     <i class="material-icons md-48">close</i>
-  </a>
+  </button>
 </td>

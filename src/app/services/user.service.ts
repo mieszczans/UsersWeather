@@ -36,13 +36,14 @@ export class UserService {
   deleteUser(user: User): void {
     const newUserList = this.userList.filter((existingUser) => user !== existingUser);
     this.userList = newUserList;
-    console.log(this.userList);
     this.userListChanges.next(newUserList);
   }
 
-  getUserById(id: number): User {
-    const chosenUsers = this.userList.filter((currentUser) => currentUser.id === id);
-    return chosenUsers[0];
+  updateUser(user: User): void {
+    const chosenUsers = this.userList.filter((currentUser) => currentUser.id !== user.id);
+    chosenUsers.push(user);
+    this.userList = chosenUsers;
+    this.userListChanges.next(chosenUsers);
   }
 
 }

@@ -1,0 +1,88 @@
+.userListButton {
+  display: inline-block;
+  margin-left: 5vw;
+  line-height: 48px;
+  color: blue;
+}
+.userDetailsContainer {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  .userName {
+    font-size: 2em;
+    padding: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
+  .forecast {
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(to bottom, #7db9e8 0%,#207cca 87%,#1e5799 100%);
+    border-radius: 20px;
+    .city {
+      font-size: 1.5em;
+      color: blue;
+      font-weight: 400;
+      margin: 0 15px 15px 15px;
+    }
+    .weather {
+      display: flex;
+      flex-flow: row;
+      text-align: center;
+      color: rgb(255, 255, 255);
+      .humidity {
+        margin-left: 30px;
+        p {
+          margin: 0;
+        }
+      }
+      .temperature {
+        p {
+          margin: 0;
+        }
+      }
+    }
+    .temperatureNumber,
+    .humidityNumber {
+      font-size: 4em;
+      margin: 0;
+    }
+  }
+  .userDetailsInfo {
+    margin-top: 30px;
+    display: flex;
+    flex-flow: row;
+    .label {
+      margin-right: 2vw;
+      border-bottom: 3px solid blue;
+    }
+    .detailValue {
+      font-weight: 500;
+    }
+    .country,
+    .gender {
+      padding: 20px;
+    }
+  }
+}
+.updatingForm {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  .female {
+    margin-left: 15px;
+  }
+  .addButton {
+    margin-top: 30px;
+  }
+}
+.containerSpinner {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+}

@@ -1,18 +1,80 @@
-<div class="userDetailsContainer">
-  <div class="weather">
-    <h1>{{this.temperature}}</h1>
-    <h1>{{this.humidity}}</h1>
-    <a href="https://www.yahoo.com/?ilc=401" target="_blank"> <img src="https://poweredby.yahoo.com/purple.png" width="134" height="29"/></a>
-  </div>
-  <div class="userDetailsInfo">
-    <h3>{{user.firstname}} {{user.surname}}</h3>
-    <div class="details">
-      <label for="city">City</label>
-      <p id="city">{{user.city}}</p>
-      <label for="country">Country</label>
-      <p id="country">{{user.country}}</p>
-      <label for="gender">Gender</label>
-      <p id="gender">{{user.gender | uppercase}}</p>
+<app-top-bar>
+  <button menu mat-button type="button" [routerLink]="['/user-list']" class="userListButton">User List</button>
+  <button menu mat-button type="button" (click)="isEditable = !isEditable" class="userListButton">Edit user info</button>
+</app-top-bar>
+<div *ngIf="!isEditable">
+  <div class="userDetailsContainer" *ngIf="user && forecast; else Loader">
+    <span class="userName">{{user?.firstname}} {{user?.surname}}</span>
+    <div *ngIf="forecast" class="forecast">
+      <p class="city">{{user?.city}}</p>
+      <div class="weather">
+        <div class="temperature">
+          <p>Temperature</p>
+          <p class="temperatureNumber"> {{this?.temperature}}&#x2103;</p>
+        </div>
+        <div class="humidity">
+          <p>Humidity</p>
+          <p class="humidityNumber"> {{this?.humidity}}%</p>
+        </div>
+      </div>
+      <a href="https://www.yahoo.com/?ilc=401" target="_blank">
+        <img src="https://poweredby.yahoo.com/purple.png" width="134" height="29" />
+      </a>
+    </div>
+    <div class="userDetailsInfo">
+      <div class="country">
+        <span class="label">Country</span>
+        <div>
+          <p class="detailValue">{{user?.country}}</p>
+        </div>
+      </div>
+      <div class="gender" [ngSwitch]="user.gender">
+        <span class="label">Gender</span>
+        <div class="detailValue" *ngSwitchCase="'male'">
+          <img src="../../assets/male.svg" alt="male icon" style="width: 40px; margin-top:5px;">
+        </div>
+        <div class="detailValue" *ngSwitchCase="'female'">
+          <img src="../../assets/002-femenine.svg" alt="female icon" style="width: 40px;margin-top:5px;">
+        </div>
+      </div>
     </div>
   </div>
+  <ng-template class="loader" #Loader>
+    <div class="containerSpinner">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  </ng-template>
+</div>
+<div *ngIf="isEditable" >
+  <form (ngSubmit)="updateUser()" [formGroup]="updateUserForm" class="updatingForm">
+    <mat-form-field>
+      <input matInput placeholder="First name" type="text" name="firstname" id="firstname" placeholder="Firstname"
+        formControlName="firstname">
+      <mat-error>Firstname is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Surname" name="surname" id="surname" placeholder="Surname" formControlName="surname">
+      <mat-error>Surname is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Country" name="country" id="country" placeholder="Country" formControlName="country">
+      <mat-error>Country is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="City" name="city" id="city" placeholder="City" formControlName="city">
+      <mat-error>City is required</mat-error>
+    </mat-form-field>
+
+    <mat-radio-group class="radio" formControlName="gender">
+      <mat-radio-button value="male">Male</mat-radio-button>
+      <mat-radio-button value="female" class="female">Female</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-action-row>
+      <button mat-raised-button type="submit" color="primary" class="addButton" [disabled]="!updateUserForm.valid">Update user</button>
+    </mat-action-row>
+  </form>
 </div>
