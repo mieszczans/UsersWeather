@@ -1,7 +1,7 @@
 import { UserApiService } from './../services/user-api.service';
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, AbstractControl, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { FormGroup, AbstractControl, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
 import { User } from '../user/user';
 
 @Component({
@@ -46,6 +46,11 @@ export class AddUserComponent implements OnInit {
   addUser(form: User): void {
     const user = this.userS.makeUserInstance(form);
     this.sendRequestAddUser(user);
+    this.clearForm();
+  }
+
+  clearForm() {
+    this.userForm.reset();
   }
 
   sendRequestAddUser(user: User): void {
